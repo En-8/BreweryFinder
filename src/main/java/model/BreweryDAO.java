@@ -3,6 +3,6 @@ package model;
 import java.util.*;
 
 public interface BreweryDAO {
-    List<Brewery> getAllBreweries(int pageNumber);
+    List<Brewery> getBreweries(BreweryQuery query);
     Brewery getBrewery(int id);
 }

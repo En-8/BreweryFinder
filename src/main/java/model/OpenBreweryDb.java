@@ -12,6 +12,7 @@ import javax.ws.rs.core.Response;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 public class OpenBreweryDb implements BreweryDAO {
     private Client client;
@@ -24,8 +25,8 @@ public class OpenBreweryDb implements BreweryDAO {
         breweryEndpoint = client.target("https://api.openbrewerydb.org/breweries{parameters}");
     }
 
-    public List<Brewery> getAllBreweries(int pageNumber) {
-        String queryParameters = "?page=" + pageNumber + "&per_page=50";
+    public List<Brewery> getBreweries(BreweryQuery query) {
+        String queryParameters = buildQueryString(query);
         WebTarget getAllBreweries = breweryEndpoint.resolveTemplate("parameters", queryParameters);
         Response response = getAllBreweries.request("application/json").get();
 
@@ -38,5 +39,26 @@ public class OpenBreweryDb implements BreweryDAO {
 
     public Brewery getBrewery(int id) {
         return null;
+    }
+
+    private String buildQueryString(BreweryQuery query) {
+        StringBuilder queryString = new StringBuilder();
+
+        queryString.append('?');
+        for (Map.Entry<String, String> queryParameter : query.searchParameters.entrySet()) {
+            queryString.append(queryParameter.getKey());
+            queryString.append('=');
+            queryString.append(queryParameter.getValue());
+            queryString.append('&');
+        }
+
+        // loop through and add sort parameters
+
+        // add entities per page and page number
+
+        //remove the last character
+        queryString.deleteCharAt(queryString.length()-1);
+
+        return queryString.toString();
     }
 }
