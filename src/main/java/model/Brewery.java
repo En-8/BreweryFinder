@@ -10,18 +10,18 @@ import java.util.List;
 public class Brewery {
     private int id;
     private String name;
-    private String type;
-    private String streetAddress;
+    private String breweryType;
+    private String street;
     private String city;
     private String state;
     private String postalCode;
     private String country;
     private double longitude;
     private double latitude;
-    private String phoneNumber;
-    private URL websiteURL;
-    private Date lastUpdated;
-    private List<String> tags;
+    private String phone;
+    private String websiteUrl; // TODO figure out how to get this stored as URL type (or is it fine as String?)
+    private Date updatedAt;
+    private List<String> tagList;
 
     /**
      * Instantiates a new Brewery.
@@ -70,17 +70,17 @@ public class Brewery {
      *
      * @return the type
      */
-    public String getType() {
-        return type;
+    public String getBreweryType() {
+        return breweryType;
     }
 
     /**
      * Sets type.
      *
-     * @param type the type
+     * @param breweryType the type
      */
-    public void setType(String type) {
-        this.type = type;
+    public void setBreweryType(String breweryType) {
+        this.breweryType = breweryType;
     }
 
     /**
@@ -88,17 +88,17 @@ public class Brewery {
      *
      * @return the street address
      */
-    public String getStreetAddress() {
-        return streetAddress;
+    public String getStreet() {
+        return street;
     }
 
     /**
      * Sets street address.
      *
-     * @param streetAddress the street address
+     * @param street the street address
      */
-    public void setStreetAddress(String streetAddress) {
-        this.streetAddress = streetAddress;
+    public void setStreet(String street) {
+        this.street = street;
     }
 
     /**
@@ -214,17 +214,17 @@ public class Brewery {
      *
      * @return the phone number
      */
-    public String getPhoneNumber() {
-        return phoneNumber;
+    public String getPhone() {
+        return phone;
     }
 
     /**
      * Sets phone number.
      *
-     * @param phoneNumber the phone number
+     * @param phone the phone number
      */
-    public void setPhoneNumber(String phoneNumber) {
-        this.phoneNumber = phoneNumber;
+    public void setPhone(String phone) {
+        this.phone = phone;
     }
 
     /**
@@ -232,17 +232,17 @@ public class Brewery {
      *
      * @return the website url
      */
-    public URL getWebsiteURL() {
-        return websiteURL;
+    public String getWebsiteUrl() {
+        return websiteUrl;
     }
 
     /**
      * Sets website url.
      *
-     * @param websiteURL the website url
+     * @param websiteUrl the website url
      */
-    public void setWebsiteURL(URL websiteURL) {
-        this.websiteURL = websiteURL;
+    public void setWebsiteUrl(String websiteUrl) {
+        this.websiteUrl = websiteUrl;
     }
 
     /**
@@ -250,17 +250,17 @@ public class Brewery {
      *
      * @return the last updated
      */
-    public Date getLastUpdated() {
-        return lastUpdated;
+    public Date getUpdatedAt() {
+        return updatedAt;
     }
 
     /**
      * Sets last updated.
      *
-     * @param lastUpdated the last updated
+     * @param updatedAt the last updated
      */
-    public void setLastUpdated(Date lastUpdated) {
-        this.lastUpdated = lastUpdated;
+    public void setUpdatedAt(Date updatedAt) {
+        this.updatedAt = updatedAt;
     }
 
     /**
@@ -268,16 +268,16 @@ public class Brewery {
      *
      * @return the tags
      */
-    public List<String> getTags() {
-        return tags;
+    public List<String> getTagList() {
+        return tagList;
     }
 
     /**
      * Sets tags.
      *
-     * @param tags the tags
+     * @param tagList the tags
      */
-    public void setTags(List<String> tags) {
-        this.tags = tags;
+    public void setTagList(List<String> tagList) {
+        this.tagList = tagList;
     }
 }
