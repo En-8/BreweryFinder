@@ -29,8 +29,8 @@ public class BreweryTest {
 
     @Test
     public void testStreetAddressGetSet() {
-        mockBrewery.setStreetAddress("123 Test Lane");
-        String address = mockBrewery.getStreetAddress();
+        mockBrewery.setStreet("123 Test Lane");
+        String address = mockBrewery.getStreet();
         assertEquals(generateFailureMessage("address"), "123 Test Lane", address);
     }
 
@@ -78,24 +78,24 @@ public class BreweryTest {
 
     @Test
     public void testPhoneNumberGetSet() {
-        mockBrewery.setPhoneNumber("123-456-7890");
-        String phoneNumber = mockBrewery.getPhoneNumber();
+        mockBrewery.setPhone("123-456-7890");
+        String phoneNumber = mockBrewery.getPhone();
         assertEquals(generateFailureMessage("phone number"), "123-456-7890", phoneNumber);
     }
 
     @Test
     public void testWebsiteURLSetException() throws MalformedURLException {
-        URL testWebsiteURL = new URL("http://localhost:8080/");
-        mockBrewery.setWebsiteURL(testWebsiteURL);
-        URL websiteURL = mockBrewery.getWebsiteURL();
+        String testWebsiteURL = "http://localhost:8080/";
+        mockBrewery.setWebsiteUrl(testWebsiteURL);
+        String websiteURL = mockBrewery.getWebsiteUrl();
         assertEquals(generateFailureMessage("website URL"), testWebsiteURL, websiteURL);
     }
 
     @Test
     public void testLastUpdatedGetSet() {
         Date testDate = new Date();
-        mockBrewery.setLastUpdated(testDate);
-        Date date = mockBrewery.getLastUpdated();
+        mockBrewery.setUpdatedAt(testDate);
+        Date date = mockBrewery.getUpdatedAt();
         assertEquals(generateFailureMessage("last updated date"), testDate, date);
     }
 
@@ -105,8 +105,8 @@ public class BreweryTest {
         testList.add("dog-friendly");
         testList.add("patio");
         testList.add("tours");
-        mockBrewery.setTags(testList);
-        List<String> tags = mockBrewery.getTags();
+        mockBrewery.setTagList(testList);
+        List<String> tags = mockBrewery.getTagList();
         assertSame(generateFailureMessage("tag list"), testList, tags);
     }
 
