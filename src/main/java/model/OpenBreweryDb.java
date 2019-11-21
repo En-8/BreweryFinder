@@ -26,7 +26,7 @@ public class OpenBreweryDb implements BreweryDAO {
 
     public List<Brewery> getAllBreweries(int pageNumber) {
         String queryParameters = "?page=" + pageNumber + "&per_page=50";
-        WebTarget getAllBreweries = breweryEndpoint.resolveTemplate("parameters", "");
+        WebTarget getAllBreweries = breweryEndpoint.resolveTemplate("parameters", queryParameters);
         Response response = getAllBreweries.request("application/json").get();
 
         Gson gson = new GsonBuilder().setFieldNamingPolicy(FieldNamingPolicy.LOWER_CASE_WITH_UNDERSCORES).create();
