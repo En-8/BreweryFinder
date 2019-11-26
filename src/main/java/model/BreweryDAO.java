@@ -1,5 +1,8 @@
 package model;
 
+import model.openbrewdb.Brewery;
+import model.openbrewdb.BreweryQuery;
+
 import java.util.*;
 
 public interface BreweryDAO {

@@ -1,4 +1,4 @@
-package model;
+package model.openbrewdb;
 
 import java.net.URL;
 import java.util.Date;

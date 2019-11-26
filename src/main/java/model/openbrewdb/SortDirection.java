@@ -1,4 +1,4 @@
-package model;
+package model.openbrewdb;
 
 public enum SortDirection {
     ASCENDING,

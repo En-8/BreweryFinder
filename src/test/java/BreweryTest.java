@@ -1,4 +1,4 @@
-import model.Brewery;
+import model.openbrewdb.Brewery;
 import org.junit.*;
 import java.net.*;
 import java.util.*;

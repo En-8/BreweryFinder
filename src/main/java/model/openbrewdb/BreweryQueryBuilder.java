@@ -1,4 +1,4 @@
-package model;
+package model.openbrewdb;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -12,10 +12,19 @@ public class BreweryQueryBuilder {
     public BreweryQueryBuilder() {
         searchParameters = new HashMap<>();
         sortParameters = new HashMap<>();
+        entitiesPerPage = 50; // TODO remove once implemented
+        pageNumber = 1; // TODO remove once implemented
     }
 
-    public void searchBy(SearchSpecification searchSpec, String searchTerm) {
+    public BreweryQueryBuilder searchBy(SearchSpecification searchSpec, String searchTerm) {
+        searchSpec.checkSearchTermValidity(searchTerm);
         searchParameters.put(searchSpec.getQueryParameter(), searchTerm);
+        return this;
+    }
+
+    public BreweryQueryBuilder searchBy(SearchSpecification searchSpec, SearchOption searchOption) {
+        searchParameters.put(searchSpec.getQueryParameter(), searchOption.getSearchOption());
+        return this;
     }
 
     public void sortBy(SearchSpecification searchSpec, SortDirection direction) {

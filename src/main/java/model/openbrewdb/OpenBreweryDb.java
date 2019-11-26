@@ -1,4 +1,4 @@
-package model;
+package model.openbrewdb;
 
 import com.google.gson.FieldNamingPolicy;
 import com.google.gson.Gson;
@@ -14,7 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-public class OpenBreweryDb implements BreweryDAO {
+public class OpenBreweryDb {
     private Client client;
     private WebTarget breweryEndpoint;
     private List<Brewery> breweries;
@@ -52,13 +52,15 @@ public class OpenBreweryDb implements BreweryDAO {
             queryString.append('&');
         }
 
-        // loop through and add sort parameters
+        // TODO insert sorting parameters
 
-        // add entities per page and page number
+        queryString.append("page=");
+        queryString.append(query.pageNumber);
+        queryString.append('&');
+        queryString.append("per_page=");
+        queryString.append(query.entitiesPerPage);
 
-        //remove the last character
-        queryString.deleteCharAt(queryString.length()-1);
-
+        System.out.println(queryString.toString());
         return queryString.toString();
     }
 }

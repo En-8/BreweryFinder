@@ -1,7 +1,6 @@
 package servlets;
 
-import model.Brewery;
-import model.OpenBreweryDb;
+import model.openbrewdb.*;
 
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -25,11 +24,20 @@ public class BrewerySearchServlet extends HttpServlet {
     }
 
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        List<Brewery> breweries = new ArrayList<>();
+        BreweryQueryBuilder builder = new BreweryQueryBuilder();
+        BreweryQuery query = builder.searchBy(new StateSearchSpec(), "wisconsin").build();
+        log(query.toString());
+        breweries = openBreweryDb.getBreweries(query);
 
+        response.setContentType("text/html");
+        PrintWriter writer = response.getWriter();
+        for (Brewery brewery : breweries) {
+            writer.print("<h1>" + brewery.getName() + "</h1>");
+        }
     }
 
     public void doPost(HttpServletRequest request, HttpServletResponse response) {
-        List<Brewery> breweries = new ArrayList<>();
-        breweries = openBreweryDb.getAllBreweries();
+
     }
 }
