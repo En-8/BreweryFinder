@@ -1,6 +1,5 @@
 package model.openbrewdb;
 
-import java.net.URL;
 import java.util.Date;
 import java.util.List;
 
@@ -19,7 +18,7 @@ public class Brewery {
     private double longitude;
     private double latitude;
     private String phone;
-    private String websiteUrl; // TODO figure out how to get this stored as URL type (or is it fine as String?)
+    private String websiteUrl;
     private Date updatedAt;
     private List<String> tagList;
 
