@@ -6,96 +6,96 @@ import java.util.*;
 import static org.junit.Assert.*;
 
 public class BreweryTest {
-    static private Brewery mockBrewery;
+    static private Brewery testBrewery;
 
     @BeforeClass
     public static void testSetUp() {
-        mockBrewery = new Brewery();
+        testBrewery = new Brewery();
     }
 
     @Test
     public void testIdGetSet() {
-        mockBrewery.setId(1);
-        int id = mockBrewery.getId();
+        testBrewery.setId(1);
+        int id = testBrewery.getId();
         assertEquals(generateFailureMessage("id"), 1, id);
     }
 
     @Test
     public void testNameGetSet() {
-        mockBrewery.setName("testName");
-        String name = mockBrewery.getName();
+        testBrewery.setName("testName");
+        String name = testBrewery.getName();
         assertEquals(generateFailureMessage("name"), "testName", name);
     }
 
     @Test
     public void testStreetAddressGetSet() {
-        mockBrewery.setStreet("123 Test Lane");
-        String address = mockBrewery.getStreet();
+        testBrewery.setStreet("123 Test Lane");
+        String address = testBrewery.getStreet();
         assertEquals(generateFailureMessage("address"), "123 Test Lane", address);
     }
 
     @Test
     public void testCityGetSet() {
-        mockBrewery.setCity("Madison");
-        String city = mockBrewery.getCity();
+        testBrewery.setCity("Madison");
+        String city = testBrewery.getCity();
         assertEquals(generateFailureMessage("city"), "Madison", city);
     }
 
     @Test
     public void testStateGetSet() {
-        mockBrewery.setState("Wisconsin");
-        String state = mockBrewery.getState();
+        testBrewery.setState("Wisconsin");
+        String state = testBrewery.getState();
         assertEquals(generateFailureMessage("state"), "Wisconsin", state);
     }
 
     @Test
     public void testPostalCodeGetSet() {
-        mockBrewery.setPostalCode("53703");
-        String postalCode = mockBrewery.getPostalCode();
+        testBrewery.setPostalCode("53703");
+        String postalCode = testBrewery.getPostalCode();
         assertEquals(generateFailureMessage("postal code"), "53703", postalCode);
     }
 
     @Test
     public void testCountryGetSet() {
-        mockBrewery.setCountry("USA");
-        String country = mockBrewery.getCountry();
+        testBrewery.setCountry("USA");
+        String country = testBrewery.getCountry();
         assertEquals(generateFailureMessage("country"), "USA", country);
     }
 
     @Test
     public void testLongitudeGetSet() {
-        mockBrewery.setLongitude(123.456);
-        double longitude = mockBrewery.getLongitude();
+        testBrewery.setLongitude(123.456);
+        double longitude = testBrewery.getLongitude();
         assertEquals(123.456, longitude, 0);
     }
 
     @Test
     public void testLatitudeGetSet() {
-        mockBrewery.setLatitude(123.456);
-        double latitude = mockBrewery.getLatitude();
+        testBrewery.setLatitude(123.456);
+        double latitude = testBrewery.getLatitude();
         assertEquals(123.456, latitude, 0);
     }
 
     @Test
     public void testPhoneNumberGetSet() {
-        mockBrewery.setPhone("123-456-7890");
-        String phoneNumber = mockBrewery.getPhone();
+        testBrewery.setPhone("123-456-7890");
+        String phoneNumber = testBrewery.getPhone();
         assertEquals(generateFailureMessage("phone number"), "123-456-7890", phoneNumber);
     }
 
     @Test
     public void testWebsiteURLSetException() throws MalformedURLException {
         String testWebsiteURL = "http://localhost:8080/";
-        mockBrewery.setWebsiteUrl(testWebsiteURL);
-        String websiteURL = mockBrewery.getWebsiteUrl();
+        testBrewery.setWebsiteUrl(testWebsiteURL);
+        String websiteURL = testBrewery.getWebsiteUrl();
         assertEquals(generateFailureMessage("website URL"), testWebsiteURL, websiteURL);
     }
 
     @Test
     public void testLastUpdatedGetSet() {
         Date testDate = new Date();
-        mockBrewery.setUpdatedAt(testDate);
-        Date date = mockBrewery.getUpdatedAt();
+        testBrewery.setUpdatedAt(testDate);
+        Date date = testBrewery.getUpdatedAt();
         assertEquals(generateFailureMessage("last updated date"), testDate, date);
     }
 
@@ -105,8 +105,8 @@ public class BreweryTest {
         testList.add("dog-friendly");
         testList.add("patio");
         testList.add("tours");
-        mockBrewery.setTagList(testList);
-        List<String> tags = mockBrewery.getTagList();
+        testBrewery.setTagList(testList);
+        List<String> tags = testBrewery.getTagList();
         assertSame(generateFailureMessage("tag list"), testList, tags);
     }
 
