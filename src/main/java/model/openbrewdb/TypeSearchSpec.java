@@ -13,7 +13,7 @@ public class TypeSearchSpec implements SearchSpecification {
     }
 
     @Override
-    public boolean checkSearchTermValidity(String searchTerm) {
-        return true;
+    public void checkSearchTermValidity(String searchTerm) {
+
     }
 }

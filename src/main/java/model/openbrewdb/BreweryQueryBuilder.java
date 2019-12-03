@@ -17,8 +17,16 @@ public class BreweryQueryBuilder {
     }
 
     public BreweryQueryBuilder searchBy(SearchSpecification searchSpec, String searchTerm) {
-        searchSpec.checkSearchTermValidity(searchTerm);
-        searchParameters.put(searchSpec.getQueryParameter(), searchTerm);
+        try {
+            searchSpec.checkSearchTermValidity(searchTerm);
+            searchParameters.put(searchSpec.getQueryParameter(), searchTerm);
+        } catch (BrewerySearchException brewerySearchException) {
+            // TODO improve exception handling
+            brewerySearchException.printStackTrace();
+        } catch (Exception exception) {
+            exception.printStackTrace();
+        }
+
         return this;
     }
 

@@ -34,7 +34,7 @@ public class BreweryQuery {
         queryString.append("per_page=");
         queryString.append(entitiesPerPage);
 
-        System.out.println(queryString.toString());
+//        System.out.println(queryString.toString());
         return queryString.toString();
     }
 }

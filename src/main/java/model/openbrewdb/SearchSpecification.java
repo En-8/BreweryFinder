@@ -2,5 +2,5 @@ package model.openbrewdb;
 
 public interface SearchSpecification {
     String getQueryParameter();
-    boolean checkSearchTermValidity(String searchTerm);
+    void checkSearchTermValidity(String searchTerm) throws BrewerySearchException;
 }

@@ -15,52 +15,46 @@ import java.util.List;
 import java.util.Map;
 
 public class OpenBreweryDb {
-    private Client client;
-    private WebTarget breweryEndpoint;
+    private String endpointUrl;
     private List<Brewery> breweries;
 
     public OpenBreweryDb() {
         breweries = new ArrayList<>();
-        client = ClientBuilder.newClient();
-        breweryEndpoint = client.target("https://api.openbrewerydb.org/breweries{parameters}");
+        endpointUrl = "https://api.openbrewerydb.org/breweries";
     }
 
     public List<Brewery> getBreweries(BreweryQuery query) {
-        String queryParameters = buildQueryString(query);
-        WebTarget getAllBreweries = breweryEndpoint.resolveTemplate("parameters", queryParameters);
-        Response response = getAllBreweries.request("application/json").get();
+        Client client = ClientBuilder.newClient();
+        WebTarget breweryEndpoint = client.target(endpointUrl);
+
+        breweryEndpoint = configureWebTarget(query, breweryEndpoint);
+
+        Response response = breweryEndpoint.request("application/json").get();
 
         Gson gson = new GsonBuilder().setFieldNamingPolicy(FieldNamingPolicy.LOWER_CASE_WITH_UNDERSCORES).create();
         Type listType = new TypeToken<List<Brewery>>() {}.getType(); // TODO figure out what this is actually doing
         breweries = gson.fromJson(response.readEntity(String.class), listType);
 
+        response.close();
+        client.close();
+
         return breweries;
+    }
+
+    private WebTarget configureWebTarget(BreweryQuery query, WebTarget breweryEndpoint) {
+        for (Map.Entry<String, String> queryParameter : query.searchParameters.entrySet()) {
+            breweryEndpoint = breweryEndpoint.queryParam(queryParameter.getKey(), queryParameter.getValue());
+        }
+        for (Map.Entry<String, SortDirection> queryParameter : query.sortParameters.entrySet()) {
+
+        }
+        breweryEndpoint = breweryEndpoint.queryParam("page", query.pageNumber);
+        breweryEndpoint = breweryEndpoint.queryParam("per_page", query.entitiesPerPage);
+        return breweryEndpoint;
     }
 
     public Brewery getBrewery(int id) {
         return null;
     }
 
-    private String buildQueryString(BreweryQuery query) {
-        StringBuilder queryString = new StringBuilder();
-
-        queryString.append('?');
-        for (Map.Entry<String, String> queryParameter : query.searchParameters.entrySet()) {
-            queryString.append(queryParameter.getKey());
-            queryString.append('=');
-            queryString.append(queryParameter.getValue());
-            queryString.append('&');
-        }
-
-        // TODO insert sorting parameters
-
-        queryString.append("page=");
-        queryString.append(query.pageNumber);
-        queryString.append('&');
-        queryString.append("per_page=");
-        queryString.append(query.entitiesPerPage);
-
-        System.out.println(queryString.toString());
-        return queryString.toString();
-    }
 }

@@ -15,13 +15,13 @@ public class StateSearchSpec implements SearchSpecification {
     }
 
     @Override
-    public boolean checkSearchTermValidity(String searchTerm) {
+    public void checkSearchTermValidity(String searchTerm) throws BrewerySearchException {
         if (Pattern.matches("[a-zA-Z]",searchTerm)) {
-            return true;
+//            return true;
         } else if (Pattern.matches("[a-zA-Z]_[a-zA-Z]", searchTerm)) {
-            return true;
+//            return true;
         } else {
-            return false;
+//            return false;
         }
     }
 }
