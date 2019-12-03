@@ -24,11 +24,10 @@ public class BrewerySearchServlet extends HttpServlet {
     }
 
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        List<Brewery> breweries = new ArrayList<>();
         BreweryQueryBuilder builder = new BreweryQueryBuilder();
         BreweryQuery query = builder.searchBy(new StateSearchSpec(), "wisconsin").build();
         log(query.toString());
-        breweries = openBreweryDb.getBreweries(query);
+        List<Brewery> breweries = openBreweryDb.getBreweries(query);
 
         response.setContentType("text/html");
         PrintWriter writer = response.getWriter();
